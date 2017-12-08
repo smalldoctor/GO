@@ -1,1 +1,5 @@
-package ch01
+package main
+
+func main()  {
+
+}
