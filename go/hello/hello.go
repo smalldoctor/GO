@@ -5,6 +5,10 @@
  */
 package main
 
+/*
+import 后面的是包的路径，而非包的名称；只是在通常情况下包名和路径名相同；
+如 fmt 是在GO安装目录的src下的fmt的目录
+*/
 import (
 	"fmt"
 	"go/stringutil"
