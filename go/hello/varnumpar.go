@@ -12,6 +12,34 @@ func main() {
 
 	cstr := make(chan string)
 	fmt.Println(cstr)
+
+	multiPar(1, 2, 3, 4)
+}
+
+/*
+可变参数函数，在接受到参数之后，将可变参数变成数组同时生成一个对其引用的切片；
+在传递过程中的修改，会影响原始的可变参数的切片；
+*/
+func multiPar(pars ...int) {
+	for _, p := range pars {
+		fmt.Println(p)
+	}
+	multiPar2(pars...)
+	multiPar3(pars...)
+}
+
+func multiPar2(pars ...int) {
+	pars[0] = 5
+	pars[1] = 6
+	for _, p := range pars {
+		fmt.Println(p)
+	}
+}
+
+func multiPar3(pars ...int) {
+	for _, p := range pars {
+		fmt.Println(p)
+	}
 }
 
 /*
