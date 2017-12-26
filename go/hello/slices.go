@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 /*
 切片是对一个已经存在数组的部分引用，相当于定一个了指针；
@@ -44,6 +47,31 @@ func main() {
 
 	sum(arr1[:])
 
+	slice1 = []int{}
+	fmt.Println(len(slice1)) // 0
+
+	// append函数在slice中追加元素，如已经没有容量了，则会新生成一个数组，
+	arr3 := [1]int{1}
+	slice3 := arr3[:]
+	fmt.Println("arr3: ", arr3, " slice3: ", slice3) // arr3:  [1]  slice3:  [1]
+	slice3 = append(slice3, 2, 3)
+	fmt.Println("arr3: ", arr3, " slice3: ", slice3) // arr3:  [1]  slice3:  [1 2 3]
+
+	// append函数在slice中追加元素时，如果存在容量，则会在扩大长度，追加内容；因为slice是对数组的引用，所以修改数组对应位置的内容
+	arr4 := [5]int{0, 1}
+	slice4 := arr4[1:3]
+	fmt.Println("arr4: ", arr4, " slice4: ", slice4) //arr4:  [0 1 0 0 0]  slice4:  [1 0]
+	slice4 = append(slice4, 5, 6)
+	fmt.Println("arr4: ", arr4, " slice4: ", slice4) //arr4:  [0 1 0 5 6]  slice4:  [1 0 5 6]
 	// grow the slice beyond capacity
 	//slice1 = slice1[0:7 ] // panic: runtime error: slice bound out of range
+
+	slicePoint := &slice4
+	fmt.Println("slicePoint: ", slicePoint)
+
+	var slicePoint2 *[]int
+	slicePoint2 = &slice4
+	fmt.Println("slicePoint2: ", slicePoint2)
+	fmt.Println("slicePoint2 type: ", reflect.TypeOf(slicePoint2), " slice4 type: ", reflect.TypeOf(slice4))
+
 }

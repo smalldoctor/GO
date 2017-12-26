@@ -1,6 +1,9 @@
 package classpath
 
-import "os"
+import (
+	"os"
+	"strings"
+)
 
 const pathListSeparator = string(os.PathListSeparator)
 
@@ -13,4 +16,10 @@ type Entry interface {
 	readClass(className string) ([] byte, Entry, error)
 	// 相当于Java中的toString方法
 	String() string
+}
+
+func newEntry(path string) Entry {
+	if strings.Contains(path, pathListSeparator) {
+		return newCompsiteEntry(path)
+	}
 }
