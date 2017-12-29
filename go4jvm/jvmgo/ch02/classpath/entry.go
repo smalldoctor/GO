@@ -22,4 +22,16 @@ func newEntry(path string) Entry {
 	if strings.Contains(path, pathListSeparator) {
 		return newCompsiteEntry(path)
 	}
+
+	if strings.HasSuffix(path, "*") {
+		return newWildcardEntry(path)
+	}
+
+	if strings.HasSuffix(path, ".jar") ||
+		strings.HasSuffix(path, ".JAR") ||
+		strings.HasSuffix(path, ".zip") ||
+		strings.HasSuffix(path, ".ZIP") {
+		return newZipEntry2(path)
+	}
+	return newDirEntry(path)
 }

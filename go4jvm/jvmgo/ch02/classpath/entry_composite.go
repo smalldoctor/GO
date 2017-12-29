@@ -1,7 +1,11 @@
 package classpath
 
-import "strings"
+import (
+	"strings"
+	"errors"
+)
 
+// 定义一个切片
 type CompositeEntry []Entry
 
 func newCompsiteEntry(pathList string) CompositeEntry {
@@ -15,9 +19,21 @@ func newCompsiteEntry(pathList string) CompositeEntry {
 }
 
 func (self CompositeEntry) readClass(className string) ([]byte, Entry, error) {
-	return nil, nil, nil
+	for _, entry := range self {
+		data, from, err := entry.readClass(className)
+		if err == nil {
+			return data, from, err
+		}
+	}
+	return nil, nil, errors.New("class not found:" + className)
 }
 
 func (self CompositeEntry) String() string {
-	return ""
+	strs := make([]string, len(self))
+
+	for i, entry := range self {
+		strs[i] = entry.String()
+	}
+
+	return strings.Join(strs, pathListSeparator)
 }
