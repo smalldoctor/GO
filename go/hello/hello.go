@@ -13,6 +13,8 @@ import (
 	"fmt"
 	"go/stringutil"
 	"math"
+	"os"
+	"strconv"
 )
 
 var (
@@ -106,6 +108,14 @@ func main() {
 		* map[key_type] value_type或者使用make函数声明map
 		* delete(key)用于删除map的key
 	 */
+
+	fileInfo, err := os.Stat("/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home")
+	if err != nil {
+		fmt.Printf(err.Error())
+	} else {
+		fmt.Println("isDir: " + strconv.FormatBool(fileInfo.IsDir()))
+	}
+
 }
 
 type Circle struct {

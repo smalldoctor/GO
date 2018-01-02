@@ -73,11 +73,15 @@ func exists(path string) bool {
 // 在使用具体类时，指定的是包名+类名；在具体读取这个class文件时，需要补全文件扩展名
 func (self *Classpath) ReadClass(className string) ([]byte, Entry, error) {
 	className = className + ".class"
-	if data, entry, err := self.bootClasspath.readClass(className); err != nil {
+	if data, entry, err := self.bootClasspath.readClass(className); err == nil {
 		return data, entry, err
 	}
-	if data, entry, err := self.extClasspath.readClass(className); err != nil {
+	if data, entry, err := self.extClasspath.readClass(className); err == nil {
 		return data, entry, err
 	}
 	return self.userClasspath.readClass(className)
+}
+
+func (self *Classpath) String() string {
+	return self.userClasspath.String()
 }
