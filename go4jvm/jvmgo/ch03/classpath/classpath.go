@@ -11,6 +11,12 @@ type Classpath struct {
 	userClasspath Entry
 }
 
+/*
+1. 类加载的顺序
+1.1 bootstrap 加载的jre/lib/*路径
+1.2 ext 加载的jre/lib/ext/*路径
+1.3 用户指定的类路径
+*/
 func Parse(jreOption string, cpOption string) *Classpath {
 	classPath := &Classpath{}
 	classPath.parseBootAndExtClasspath(jreOption)
