@@ -21,6 +21,7 @@ func sum(a []int) int {
 
 func main() {
 	var arr1 [6]int
+	// 切片的类型还是数组
 	var slice1 []int = arr1[2:5] // item at index 5 not included!
 
 	// load the array with integers: 0,1,2,3,4,5
@@ -67,7 +68,10 @@ func main() {
 	//slice1 = slice1[0:7 ] // panic: runtime error: slice bound out of range
 
 	slicePoint := &slice4
+	// 切片类型是数组，只不过是他本身所引用的数组共享了内存空间；切片在实现上使用了自己的数据模型，
+	// 从而可以进行比普通数组更多的操作；可以类比JAVA的集合类型，切片底层是用数组实现的；
 	fmt.Println("slicePoint: ", slicePoint)
+	fmt.Println("the array of slice4: ", &arr4)
 
 	var slicePoint2 *[]int
 	slicePoint2 = &slice4
