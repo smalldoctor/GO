@@ -2,29 +2,6 @@ package classfile
 
 import "encoding/binary"
 
-/*
-定义一个结构体包含需要读取的class文件的的字节流，定义读取各种类型的方法；
-
-文件结构：
-ClassFile{
-u4 magic;
-u2 minor_version;
-u2 major_version;
-u2 constant_pool_count;
-cp_info constant_pool[constant_pool_count - 1];  //??为什么-1
-u2 access_flags;
-u2 this_class;
-u2 super_class;
-u2 interfaces_count;
-u2 interfaces[interfaces_count];
-u2 fields_count;
-field_info fields[fields_count];
-u2 methods_count;
-method_info methods[methods_count];
-u2 attributes_count;
-attribute_info attributes[attributes_count];
-}
-*/
 type ClassReader struct {
 	data []byte
 }
