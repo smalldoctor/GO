@@ -155,3 +155,7 @@ func testRef(c Circle) {
 func testRef2(c *Circle) {
 	c.radius = 12
 }
+
+/*
+GO不支持隐式类型转换，通过类型断言或者类型转换
+*/
