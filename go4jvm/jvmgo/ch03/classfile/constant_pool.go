@@ -12,6 +12,7 @@ type ConstantPool []ConstantInfo
 func readConstantPool(reader *ClassReader) ConstantPool {
 	// 常量池大小
 	cpCount := reader.readUint16()
+	// ConstantInfo 是interface，此处的实现者就是指针
 	cp := make([]ConstantInfo, cpCount)
 	var i uint16 = 1
 	// 索引从1开始
@@ -45,6 +46,14 @@ func (self ConstantPool) getNameAndType(index uint16) (string, string) {
 从常量池中获取类信息
 */
 func (self ConstantPool) getClassName(index uint16) string {
+	// TODO
+	return ""
+}
+
+/*
+获取UTF8字符
+*/
+func (self ConstantPool) getUtf8(index uint16) string {
 	// TODO
 	return ""
 }
