@@ -67,7 +67,8 @@ func Parse(classData []byte) (cf *ClassFile, err error) {
 }
 
 /*
-ClassFile作为目标结构，使用一个输入流作为参数
+ClassFile作为目标结构，使用一个输入流作为参数;
+因为最终操作的是字节流，所以需要搞清楚每个字节代表的含义；
 */
 func (self *ClassFile) read(reader *ClassReader) {
 	// 获取字节流中相关字节，将字节流转换为 ClassFile结构体

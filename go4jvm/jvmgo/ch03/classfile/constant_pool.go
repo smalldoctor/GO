@@ -5,7 +5,7 @@ package classfile
 常量池在class文件中用表进行标识；
 1. 表头是n，则表项个数为n-1，因为第0个是无效索引；
 2. 表项的有效索引为1 ~ n-1, 索引0是无效索引,标示不指向任何常量
-3. CONSTANT_Long_Info 和 CONSTANT_Double_Info 占据两个位置；因此实际表项的个数小于等与n-1个
+3. CONSTANT_Long_Info 和 CONSTANT_Double_Info 占据两个位置,即计数为2；因此实际表项的个数小于等与n-1个
 */
 type ConstantPool []ConstantInfo
 
@@ -51,9 +51,11 @@ func (self ConstantPool) getClassName(index uint16) string {
 }
 
 /*
-获取UTF8字符
+获取UTF8字符;
+index: 是常量池的索引
 */
 func (self ConstantPool) getUtf8(index uint16) string {
-	// TODO
-	return ""
+	//(*ConstantUtf8Info)类型断言
+	utf8Info := self.getConstantInfo(index).(*ConstantUtf8Info)
+	return utf8Info.Str()
 }

@@ -15,6 +15,7 @@ type ConstantIntegerInfo struct {
 
 func (self *ConstantIntegerInfo) readInfo(reader *ClassReader) {
 	// 如果是负数的常量?????
+	// ==> go中byte是uint8,实际使用时，根据场景识别是要按照int32还是uint32
 	byte := reader.readUint32()
 	self.val = int32(byte)
 }
@@ -61,5 +62,26 @@ func (self *ConstantLongInfo) readInfo(reader *ClassReader) {
 }
 
 func (self *ConstantLongInfo) Value() int64 {
+	return self.val
+}
+
+/*
+Constant_Double_Info{
+u1 tag
+u4 high_bytes
+u4 low_bytes
+}
+*/
+
+type ConstantDoubleInfo struct {
+	val float64
+}
+
+func (self *ConstantDoubleInfo) readInfo(reader *ClassReader) {
+	byte := reader.readUint64()
+	self.val = math.Float64frombits(byte)
+}
+
+func (self *ConstantDoubleInfo) Value() float64 {
 	return self.val
 }

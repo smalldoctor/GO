@@ -32,7 +32,7 @@ func (self *ClassReader) readUint32() uint32 {
 }
 
 /*
-JVM规范中没有64位的
+JVM规范中没有64位的,u1,u2,u4
 */
 func (self *ClassReader) readUint64() uint64 {
 	val := binary.BigEndian.Uint64(self.data)
