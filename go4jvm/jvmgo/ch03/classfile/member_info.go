@@ -18,20 +18,20 @@ method_info {
 虚拟机规范定义的字段和方法的基本结构相同，仅在属性表存在差异；
 
 method:
-class文件在生成时，编译器会默认生成init方法
+class文件在生成时，编译器会默认生成init方法,即默认构造器
 */
 
 //字段和方法使用同一个结构体
 type MemberInfo struct {
 	//常量池指针,用于后面获取信息
-	cp               *ConstantPool
+	cp               ConstantPool
 	accessFlags      uint16
 	nameIndex        uint16
 	descriptionIndex uint16
 	//TODO 属性表
 }
 
-func readMembers(cp *ConstantPool, reader *ClassReader) []*MemberInfo {
+func readMembers(reader *ClassReader, cp ConstantPool) []*MemberInfo {
 	memberCount := reader.readUint16()
 	members := make([]*MemberInfo, memberCount)
 	for i := range members {
@@ -40,7 +40,7 @@ func readMembers(cp *ConstantPool, reader *ClassReader) []*MemberInfo {
 	return members
 }
 
-func readMember(reader *ClassReader, cp *ConstantPool) *MemberInfo {
+func readMember(reader *ClassReader, cp ConstantPool) *MemberInfo {
 	return &MemberInfo{
 		cp:               cp,
 		accessFlags:      reader.readUint16(),
@@ -53,5 +53,12 @@ func (self *MemberInfo) AccessFlags() uint16 {
 	return self.accessFlags
 }
 
-//TODO Name名字
-//TODO Description描述
+// Name名字
+func (self *MemberInfo) Name() string {
+	return self.cp.getUtf8(self.nameIndex)
+}
+
+// Description描述
+func (self *MemberInfo) Description() string {
+	return self.cp.getUtf8(self.descriptionIndex)
+}

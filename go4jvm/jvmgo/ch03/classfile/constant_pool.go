@@ -4,7 +4,7 @@ package classfile
 常量池包含数字，字符串，字段名，方法名等各种各样的常量信息;
 常量池在class文件中用表进行标识；
 1. 表头是n，则表项个数为n-1，因为第0个是无效索引；
-2. 表项的有效索引为1 ~ n-1, 索引0是无效索引,标示不指向任何常量
+2. 表项的有效索引为1 ~ n-1, 索引0是无效索引,表示不指向任何常量
 3. CONSTANT_Long_Info 和 CONSTANT_Double_Info 占据两个位置,即计数为2；因此实际表项的个数小于等与n-1个
 */
 type ConstantPool []ConstantInfo
@@ -35,19 +35,21 @@ func (self ConstantPool) getConstantInfo(index uint16) ConstantInfo {
 }
 
 /*
-从常量池中查找方法或者字段的名称和描述(类型)
+从常量池中查找方法或者字段的名称和描述(类型描述)
 */
 func (self ConstantPool) getNameAndType(index uint16) (string, string) {
-	//TODO
-	return "", ""
+	nameAndTypeInfo := self.getConstantInfo(index).(*ConstantNameAndTypeInfo)
+	name := self.getUtf8(nameAndTypeInfo.nameIndex)
+	_type := self.getUtf8(nameAndTypeInfo.descriptorIndex)
+	return name, _type
 }
 
 /*
 从常量池中获取类信息
 */
 func (self ConstantPool) getClassName(index uint16) string {
-	// TODO
-	return ""
+	classInfo := self.getConstantInfo(index).(*ConstantClassInfo)
+	return classInfo.Name()
 }
 
 /*
