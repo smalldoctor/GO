@@ -19,7 +19,7 @@ type ConstantUtf8Info struct {
 }
 
 func (self *ConstantUtf8Info) readInfo(reader *ClassReader) {
-	length := reader.readUint32()
+	length := uint32(reader.readUint16())
 	bytes := reader.readBytes(length)
 	// JAVA使用的是MUTF-8编码;GO语言使用的是UTF-8编码
 	self.str = decodeMUTF8(bytes)

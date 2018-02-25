@@ -58,7 +58,7 @@ func getJreDir(jreOption string) string {
 
 func (self *Classpath) parseUserClasspath(cpOption string) {
 	// 如果cpOption没有设置，则默认当前目录
-	if cpOption != "" {
+	if cpOption == "" {
 		cpOption = "."
 	}
 	// 因为cpOption是外界传入，所以无法确定classpath的类型

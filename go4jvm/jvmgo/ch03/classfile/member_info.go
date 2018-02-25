@@ -28,7 +28,8 @@ type MemberInfo struct {
 	accessFlags      uint16
 	nameIndex        uint16
 	descriptionIndex uint16
-	//TODO 属性表
+	// 属性表
+	attributes []AttributeInfo
 }
 
 func readMembers(reader *ClassReader, cp ConstantPool) []*MemberInfo {
@@ -46,6 +47,7 @@ func readMember(reader *ClassReader, cp ConstantPool) *MemberInfo {
 		accessFlags:      reader.readUint16(),
 		nameIndex:        reader.readUint16(),
 		descriptionIndex: reader.readUint16(),
+		attributes:       readAttributes(reader, cp),
 	}
 }
 

@@ -1,5 +1,7 @@
 package classfile
 
+import "fmt"
+
 /*
 常量池包含数字，字符串，字段名，方法名等各种各样的常量信息;
 常量池在class文件中用表进行标识；
@@ -17,8 +19,13 @@ func readConstantPool(reader *ClassReader) ConstantPool {
 	var i uint16 = 1
 	// 索引从1开始
 	for i = 1; i < cpCount; i++ {
-		// TODO 读取数据
-		// TODO 如果是long,double需要占据两个位置
+		//  读取数据
+		cp[i] = readConstantInfo(reader, cp)
+		//  如果是long,double需要占据两个位置
+		switch cp[i].(type) {
+		case *ConstantLongInfo, *ConstantDoubleInfo:
+			i++
+		}
 	}
 
 	return cp
@@ -31,7 +38,7 @@ func (self ConstantPool) getConstantInfo(index uint16) ConstantInfo {
 	if cpInfo := self[index]; cpInfo != nil {
 		return cpInfo
 	}
-	panic("Invalid constant pool index!")
+	panic(fmt.Errorf("Invalid constant pool index: %v!", index))
 }
 
 /*

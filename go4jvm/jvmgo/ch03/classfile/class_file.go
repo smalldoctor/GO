@@ -4,6 +4,7 @@ import "fmt"
 
 /*
 定义一个结构体包含需要读取的class文件的的字节流，定义读取各种类型的方法；
+解析class文件的关键是每个字节都被读取到；
 
 文件结构：
 ClassFile{
@@ -31,17 +32,20 @@ type ClassFile struct {
 	minorVersion uint16
 	majorVersion uint16
 	// constant pool
-	constantPool *ConstantPool
+	constantPool ConstantPool
 	/*
 	accessFlag是一个16的bitmask，包含多个信息
 	*/
 	accessFlags uint16
 	thisClass   uint16
 	superClass  uint16
-	interfaces  []uint16
-	fields      []*MemberInfo
-	methods     []*MemberInfo
-	//TODO attributes
+	// 在字节码文件中存放的常量池的索引（CONSTANT_Class_info）
+	interfaces []uint16
+	fields     []*MemberInfo
+	methods    []*MemberInfo
+	// attributes
+	// AttributeInfo是接口，实现者都是结构体指针
+	attributes []AttributeInfo
 }
 
 func Parse(classData []byte) (cf *ClassFile, err error) {
@@ -74,8 +78,15 @@ func (self *ClassFile) read(reader *ClassReader) {
 	// 获取字节流中相关字节，将字节流转换为 ClassFile结构体
 	self.readAndCheckMagic(reader)
 	self.readAndCheckVersion(reader)
-	//TODO 常量池
+	// 常量池
+	self.constantPool = readConstantPool(reader)
 	self.accessFlags = reader.readUint16()
+	self.thisClass = reader.readUint16()
+	self.superClass = reader.readUint16()
+	self.interfaces = reader.readUint16s()
+	self.fields = readMembers(reader, self.constantPool)
+	self.methods = readMembers(reader, self.constantPool)
+	self.attributes = readAttributes(reader, self.constantPool)
 }
 
 /*
@@ -115,22 +126,41 @@ func (self *ClassFile) MajorVersion() uint16 {
 	return self.majorVersion
 }
 
-func (self *ClassFile) AccessFlag() uint16 {
+func (self *ClassFile) AccessFlags() uint16 {
 	return self.accessFlags
 }
 
-//TODO Getter Field
-//func (self *ClassFile)
+// Getter Field
+func (self *ClassFile) Fields() []*MemberInfo {
+	return self.fields
+}
 
-//TODO Getter Method
+// Getter Method
+func (self *ClassFile) Methods() []*MemberInfo {
+	return self.methods
+}
 
 /*
 本身类名，父类名，接口名都是在Constant Pool中存放的；
 本身类名和父类名都必须是有效的常量池索引；class文件存储的类名都是将点换成斜线的全限定类，被称为
 二进制名；除了java.lang.Object的父类是0之外，其他的java类都必须是有效的父类;
 */
-//TODO Getter ClassName
+// Getter ClassName
+func (self *ClassFile) ClassName() string {
+	return self.constantPool.getClassName(self.thisClass)
+}
 
-//TODO Getter SuperClassName
+// Getter SuperClassName
+func (self *ClassFile) SuperClassName() string {
+	return self.constantPool.getClassName(self.superClass)
+}
 
-//TODO Getter InterfaceNames
+// ConstantPool
+func (self *ClassFile) ConstantPool() ConstantPool {
+	return self.constantPool
+}
+
+// Getter InterfaceNames
+func (self *ClassFile) InterfaceNames() []uint16 {
+	return self.interfaces
+}
