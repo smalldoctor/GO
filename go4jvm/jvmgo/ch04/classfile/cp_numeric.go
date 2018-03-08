@@ -10,6 +10,7 @@ u4 bytes;
 */
 
 type ConstantIntegerInfo struct {
+	//byte,char,short,boolean在JVM中都是用Integer进行表示
 	val int32
 }
 

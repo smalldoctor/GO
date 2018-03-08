@@ -16,6 +16,7 @@ int I
 long J
 float F
 double D
+boolean Z
 引用类型  L+类型限定名+;
 数组类型 [+数组元素类型描述符
 
