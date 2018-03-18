@@ -12,10 +12,13 @@ type Classpath struct {
 }
 
 /*
-1. 类加载的顺序
-1.1 bootstrap 加载的jre/lib/*路径
-1.2 ext 加载的jre/lib/ext/*路径
-1.3 用户指定的类路径
+1. HotSpot按照类路径进行类的加载；类路径分为三部分：
+bootstrap classpath  jre\lib目录；
+extension classpath jre\lib\ext目录；
+user classpath 默认是当前路径；
+user classpath可以通过CLASSPATH环境变量指定，或者通过java -cp/-classpath指定类路径；
+-cp/-classpath的优先级比CLASSPATH的优先级高；
+可以通过-Xbootclasspath改变启动类路径(bootstrap classpath);
 */
 func Parse(jreOption string, cpOption string) *Classpath {
 	classPath := &Classpath{}
