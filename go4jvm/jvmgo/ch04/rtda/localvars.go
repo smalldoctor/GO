@@ -57,3 +57,13 @@ func (self LocalVars) GetLong(index uint) int64 {
 	//32位转64位，直接放在低位
 	return int64(high)<<32 | low
 }
+
+func (self *LocalVars) SetDouble(index uint, val float64) {
+	bits := math.Float64bits(val)
+	self.SetLong(index, int64(bits))
+}
+
+func (self *LocalVars) GetDouble(index uint) float64 {
+	bits := uint64(self.GetLong(index))
+	return math.Float64frombits(bits)
+}
