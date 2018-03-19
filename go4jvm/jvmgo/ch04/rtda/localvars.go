@@ -20,11 +20,11 @@ func newLocalVars(maxLocals uint) LocalVars {
 }
 
 //-----------------------------针对不同类型数据的处理
-func (self LocalVars) SetInt(index uint, val int) {
+func (self LocalVars) SetInt(index uint, val int32) {
 	self[index].num = val
 }
 
-func (self LocalVars) GetInt(index uint) int {
+func (self LocalVars) GetInt(index uint) int32 {
 	return self[index].num
 }
 
@@ -33,7 +33,6 @@ float通过先转换成bit，再从bit转换为int
 */
 func (self LocalVars) SetFloat(index uint, val float32) {
 	bits := math.Float32bits(val)
-	//noinspection GoBinaryAndUnaryExpressionTypesCompatibility
 	self[index].num = int32(bits)
 }
 
@@ -42,7 +41,6 @@ func (self LocalVars) GetFloat(index uint) float32 {
 	return math.Float32frombits(bits)
 }
 
-//noinspection GoBinaryAndUnaryExpressionTypesCompatibility
 func (self LocalVars) SetLong(index uint, val int64) {
 	// 64位赋值32位，会直接截取后32位
 	// 低位在前，高位在后
@@ -50,20 +48,27 @@ func (self LocalVars) SetLong(index uint, val int64) {
 	self[index+1].num = int32(val >> 32)
 }
 
-//noinspection GoBinaryAndUnaryExpressionTypesCompatibility
 func (self LocalVars) GetLong(index uint) int64 {
 	low := uint32(self[index].num)
 	high := uint32(self[index+1].num)
 	//32位转64位，直接放在低位
-	return int64(high)<<32 | low
+	return int64(high)<<32 | int64(low)
 }
 
-func (self *LocalVars) SetDouble(index uint, val float64) {
+func (self LocalVars) SetDouble(index uint, val float64) {
 	bits := math.Float64bits(val)
 	self.SetLong(index, int64(bits))
 }
 
-func (self *LocalVars) GetDouble(index uint) float64 {
+func (self LocalVars) GetDouble(index uint) float64 {
 	bits := uint64(self.GetLong(index))
 	return math.Float64frombits(bits)
+}
+
+func (self LocalVars) SetRef(index uint, ref *Object) {
+	self[index].ref = ref
+}
+
+func (self LocalVars) GetRef(index uint) *Object {
+	return self[index].ref
 }

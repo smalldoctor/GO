@@ -6,6 +6,6 @@ package rtda
 */
 
 type Slot struct {
-	num int
+	num int32
 	ref *Object
 }
