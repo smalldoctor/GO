@@ -12,6 +12,8 @@ type Frame struct {
 	// 局部变量表指针
 	localVars    LocalVars
 	operandStack *OperandStack
+	//	TODO 线程Thread
+	nextPC int
 }
 
 /*
@@ -19,7 +21,22 @@ type Frame struct {
 并且保存在字节码中，存在method_info的code属性中;
 */
 func NewFrame(maxLocals, maxStacks uint) *Frame {
-	return &Frame{localVars: newLocalVars(maxLocals),
+	return &Frame{
+		localVars:    newLocalVars(maxLocals),
 		operandStack: newOperandStack(maxStacks),
 	}
+}
+
+// getters & setters
+func (self *Frame) LocalVars() LocalVars {
+	return self.localVars
+}
+func (self *Frame) OperandStack() *OperandStack {
+	return self.operandStack
+}
+func (self *Frame) NextPC() int {
+	return self.nextPC
+}
+func (self *Frame) SetNextPC(nextPC int) {
+	self.nextPC = nextPC
 }

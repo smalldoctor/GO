@@ -31,7 +31,7 @@ func (self *ByteCodeReader) ReadInt16() int16 {
 }
 
 /*
-在使用的过程，是小端存储
+在存储字节码时，是大端；
 */
 func (self *ByteCodeReader) ReadInt32() int32 {
 	code1 := int32(self.ReadUint8())
