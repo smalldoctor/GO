@@ -6,13 +6,15 @@ type OperandStack struct {
 	/*
 	通过数组模拟栈，因为数组的容量已经确定，所以可以通过下标索引进行模拟;
 	*/
-	size  uint
+	size uint
+	// 非结构体指针，因为后续进行栈操作时，需要进行拷贝，所以值传递
 	slots []Slot
 }
 
 func newOperandStack(maxStacks uint) *OperandStack {
 	if maxStacks > 0 {
 		return &OperandStack{
+			// 因为最大操作数栈在编译器已经确定，所以初始化时建立Slot元素的数组，即操作数栈
 			slots: make([]Slot, maxStacks),
 		}
 	}
