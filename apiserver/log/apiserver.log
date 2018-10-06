@@ -1,0 +1,73 @@
+{"level":"INFO","timestamp":"2018-10-04 11:38:38.939","file":"demo/main.go:64","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-04 11:38:38.941","file":"demo/main.go:61","msg":"The router has been deployed successfully."}
+{"level":"ERROR","timestamp":"2018-10-05 16:28:53.578","file":"model/init.go:32","msg":"Database connection failed. Database name: db_apiserver","data":{"error":"Error 1045: Access denied for user 'test'@'180.110.246.177' (using password: YES)"}}
+{"level":"ERROR","timestamp":"2018-10-05 16:28:53.795","file":"model/init.go:32","msg":"Database connection failed. Database name: db_apiserver","data":{"error":"Error 1045: Access denied for user 'test'@'180.110.246.177' (using password: YES)"}}
+{"level":"INFO","timestamp":"2018-10-05 16:28:53.796","file":"demo/main.go:69","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-05 16:28:53.798","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-05 16:39:14.356","file":"demo/main.go:69","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-05 16:39:14.357","file":"demo/main.go:83","msg":"Waiting for the router, retry in 1 second."}
+{"level":"INFO","timestamp":"2018-10-05 16:39:15.363","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 07:33:13.586","file":"demo/main.go:69","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 07:33:13.587","file":"demo/main.go:83","msg":"Waiting for the router, retry in 1 second."}
+{"level":"INFO","timestamp":"2018-10-06 07:33:14.593","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 07:36:23.605","file":"demo/main.go:69","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 07:36:23.606","file":"demo/main.go:83","msg":"Waiting for the router, retry in 1 second."}
+{"level":"INFO","timestamp":"2018-10-06 07:36:24.608","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"DEBUG","timestamp":"2018-10-06 07:38:55.087","file":"user/create.go:24","msg":"username is: [], password is []"}
+{"level":"ERROR","timestamp":"2018-10-06 07:38:55.087","file":"user/create.go:27","msg":"Get an error","data":{"error":"Err - code: 20102, message: The user was not found. This is add message., error: username can not found in db: xx.xx.xx.xx"}}
+{"level":"DEBUG","timestamp":"2018-10-06 07:38:55.088","file":"user/create.go:31","msg":"err type is ErrUserNotFound"}
+{"level":"INFO","timestamp":"2018-10-06 08:52:20.498","file":"demo/main.go:69","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 08:52:20.499","file":"demo/main.go:83","msg":"Waiting for the router, retry in 1 second."}
+{"level":"INFO","timestamp":"2018-10-06 08:52:21.504","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 08:53:13.710","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:53:27.534","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:54:00.610","file":"demo/main.go:69","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 08:54:00.613","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 08:54:04.208","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:54:26.453","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:55:18.109","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:55:41.939","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:55:46.808","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:55:49.618","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:55:58.433","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:56:04.286","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:56:51.109","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 08:57:48.728","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":""}}
+{"level":"INFO","timestamp":"2018-10-06 15:35:04.663","file":"demo/main.go:69","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 15:35:04.665","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 15:35:25.397","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":"97a109b4-ff83-48c0-943d-484f64e6e15c"}}
+{"level":"INFO","timestamp":"2018-10-06 15:35:25.932","file":"middleware/logging.go:82","msg":"4.990482s     | 127.0.0.1    | POST /v1/user | {code: 20002, message: Database error.}"}
+{"level":"INFO","timestamp":"2018-10-06 15:36:05.053","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":"ccc00f88-15ac-418c-a3bb-fe26759e035e"}}
+{"level":"INFO","timestamp":"2018-10-06 15:36:05.713","file":"middleware/logging.go:82","msg":"661.099ms     | 127.0.0.1    | POST /v1/user | {code: 0, message: OK}"}
+{"level":"INFO","timestamp":"2018-10-06 16:03:14.370","file":"config/config.go:71","msg":"Config file change: /Users/xuechunyang/Thinkings/Workspace/Go/src/apiserver/demo/conf/config.yaml"}
+{"level":"INFO","timestamp":"2018-10-06 16:11:49.880","file":"demo/main.go:69","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 16:11:49.882","file":"demo/main.go:83","msg":"Waiting for the router, retry in 1 second."}
+{"level":"INFO","timestamp":"2018-10-06 16:11:50.887","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 16:12:09.335","file":"middleware/logging.go:82","msg":"1.048837s     | 127.0.0.1    | POST /login | {code: 0, message: OK}"}
+{"level":"INFO","timestamp":"2018-10-06 16:12:42.403","file":"middleware/logging.go:82","msg":"198µs         | 127.0.0.1    | POST /v1/user | {code: 20103, message: The token was invalid.}"}
+{"level":"INFO","timestamp":"2018-10-06 16:13:14.291","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":"92f8da87-2ccc-4460-ab5f-19e88f2211bf"}}
+{"level":"INFO","timestamp":"2018-10-06 16:13:14.775","file":"middleware/logging.go:82","msg":"484.267ms     | 127.0.0.1    | POST /v1/user | {code: 0, message: OK}"}
+{"level":"INFO","timestamp":"2018-10-06 16:26:02.888","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":"984531fd-ebc0-4dec-af0d-dd1338c30c59"}}
+{"level":"INFO","timestamp":"2018-10-06 16:26:03.376","file":"middleware/logging.go:82","msg":"12m16.01046s  | 127.0.0.1    | POST /v1/user | {code: 20002, message: Database error.}"}
+{"level":"INFO","timestamp":"2018-10-06 16:52:59.308","file":"config/config.go:71","msg":"Config file change: /Users/xuechunyang/Thinkings/Workspace/Go/src/apiserver/demo/conf/config.yaml"}
+{"level":"INFO","timestamp":"2018-10-06 16:54:23.812","file":"demo/main.go:79","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 16:54:23.813","file":"demo/main.go:74","msg":"Start to listening the incoming requests on https address: 8081"}
+{"level":"INFO","timestamp":"2018-10-06 16:54:23.814","file":"demo/main.go:75","msg":"listen tcp: address 8081: missing port in address"}
+{"level":"INFO","timestamp":"2018-10-06 16:54:23.814","file":"demo/main.go:93","msg":"Waiting for the router, retry in 1 second."}
+{"level":"INFO","timestamp":"2018-10-06 16:54:24.820","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 16:55:24.055","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":"8ff92ec1-9a07-44c2-b47a-bf452c30bcdc"}}
+{"level":"INFO","timestamp":"2018-10-06 16:55:24.057","file":"middleware/logging.go:82","msg":"5.972035s     | 127.0.0.1    | POST /v1/user | {code: 20001, message: Validation failed.}"}
+{"level":"INFO","timestamp":"2018-10-06 16:55:26.386","file":"user/create.go:15","msg":"User Create function called.","data":{"X-Request-Id":"eda9616f-17f0-44c6-888a-257e12289ef8"}}
+{"level":"INFO","timestamp":"2018-10-06 16:55:26.910","file":"middleware/logging.go:82","msg":"524.22ms      | 127.0.0.1    | POST /v1/user | {code: 20002, message: Database error.}"}
+{"level":"INFO","timestamp":"2018-10-06 16:59:25.642","file":"demo/main.go:79","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 16:59:25.643","file":"demo/main.go:74","msg":"Start to listening the incoming requests on https address: 8081"}
+{"level":"INFO","timestamp":"2018-10-06 16:59:25.643","file":"demo/main.go:93","msg":"Waiting for the router, retry in 1 second."}
+{"level":"INFO","timestamp":"2018-10-06 16:59:25.643","file":"demo/main.go:75","msg":"listen tcp: address 8081: missing port in address"}
+{"level":"INFO","timestamp":"2018-10-06 16:59:26.647","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 16:59:34.375","file":"demo/main.go:79","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 16:59:34.375","file":"demo/main.go:74","msg":"Start to listening the incoming requests on https address: :8081"}
+{"level":"INFO","timestamp":"2018-10-06 16:59:34.377","file":"demo/main.go:75","msg":"open demo/conf/server.crt: no such file or directory"}
+{"level":"INFO","timestamp":"2018-10-06 16:59:34.377","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
+{"level":"INFO","timestamp":"2018-10-06 17:01:10.012","file":"demo/main.go:79","msg":"Start to listening the incoming requests on http address: :8080"}
+{"level":"INFO","timestamp":"2018-10-06 17:01:10.014","file":"demo/main.go:74","msg":"Start to listening the incoming requests on https address: :8081"}
+{"level":"INFO","timestamp":"2018-10-06 17:01:10.016","file":"demo/main.go:66","msg":"The router has been deployed successfully."}
